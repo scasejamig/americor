@@ -2,15 +2,9 @@
 
 use app\widgets\HistoryList\HistoryList;
 
-/* @var $this yii\web\View */
-
-$this->title = 'My Yii Application';
+$this->title = 'Americor Test';
 ?>
 
 <div class="site-index">
-
-
     <?= HistoryList::widget([]) ?>
-
-
 </div>

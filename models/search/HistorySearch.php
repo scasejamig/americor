@@ -3,7 +3,6 @@
 namespace app\models\search;
 
 use app\models\History;
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
@@ -19,37 +18,7 @@ class HistorySearch extends History
      */
     public function rules()
     {
-        return [
-            [[
-                'customer_id',
-                'objects',
-                'user_id',
-                'search',
-                'department_ids',
-                'date_from',
-                'date_to',
-                'denyObjects'
-            ], 'safe'],
-        ];
-
-    }
-
-    public function behaviors()
-    {
         return [];
-    }
-
-    /**
-     * @return array
-     */
-    public function attributeLabels()
-    {
-        return [
-            'user_id' => Yii::t('app', 'Agents'),
-            'objects' => Yii::t('app', 'Types'),
-            'search' => Yii::t('app', 'Search'),
-            'department_ids' => Yii::t('app', 'Department'),
-        ];
     }
 
     /**
@@ -92,6 +61,7 @@ class HistorySearch extends History
             $query->where('0=1');
             return $dataProvider;
         }
+
         $query->addSelect('history.*');
         $query->with([
             'customer',
@@ -100,11 +70,6 @@ class HistorySearch extends History
             'task',
             'call',
             'fax',
-        ]);
-
-        $query->andFilterWhere([
-            'history.customer_id' => $this->customer_id,
-            'history.user_id' => $this->user_id
         ]);
 
         return $dataProvider;

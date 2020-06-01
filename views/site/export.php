@@ -8,7 +8,6 @@
  */
 
 use app\models\History;
-use app\models\Task;
 use app\widgets\Export\Export;
 use app\widgets\HistoryList\helpers\HistoryListHelper;
 
